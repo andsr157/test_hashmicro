@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HashMicro - Employee Management System</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <link rel="stylesheet" href="./src/assets/styles/main.css" />
+    </head>
+
+    <body>
+        <div id="app" class="app-container">
+            <navbar-component
+                ref="navbar"
+                :current-view="currentView"
+                @navigate="handleNavigation"
+            ></navbar-component>
+
+            <div class="main-wrapper">
+                <header class="top-header">
+                    <div class="header-left">
+                        <button
+                            class="sidebar-toggle"
+                            @click="toggleSidebar"
+                            aria-label="Toggle sidebar"
+                        >
+                            <span class="toggle-bar"></span>
+                            <span class="toggle-bar"></span>
+                            <span class="toggle-bar"></span>
+                        </button>
+                        <div class="breadcrumb">
+                            <span>Home</span>
+                            <span class="breadcrumb-separator">/</span>
+                            <span class="breadcrumb-current"
+                                >{{ currentPageTitle }}</span
+                            >
+                        </div>
+                    </div>
+                </header>
+
+                <main class="main-content">
+                    <dashboard-view
+                        v-if="currentView === 'dashboard'"
+                        :items="items"
+                        @go-to-employees="goToEmployees"
+                        @go-to-create="goToCreate"
+                    ></dashboard-view>
+
+                    <list-view
+                        v-else-if="currentView === 'employees' || currentView === 'list'"
+                        :items="items"
+                        @go-to-create="goToCreate"
+                        @go-to-edit="goToEdit"
+                        @delete-item="handleDelete"
+                    ></list-view>
+
+                    <create-view
+                        v-else-if="currentView === 'create'"
+                        @save="handleCreate"
+                        @cancel="goToEmployees"
+                    ></create-view>
+
+                    <edit-view
+                        v-else-if="currentView === 'edit'"
+                        :item="selectedItem"
+                        @save="handleUpdate"
+                        @cancel="goToEmployees"
+                    ></edit-view>
+                </main>
+            </div>
+            <button
+                v-if="currentView === 'employees' || currentView === 'list'"
+                class="fab"
+                @click="goToCreate"
+                title="Add Employee"
+            >
+                +
+            </button>
+        </div>
+
+        <script type="module" src="./src/app.js"></script>
+    </body>
+</html>
