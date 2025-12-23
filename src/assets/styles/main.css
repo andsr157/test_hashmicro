@@ -1138,9 +1138,12 @@ a:hover {
 }
 
 .data-table .actions {
-    display: flex;
-    gap: var(--md-spacing-1);
-    justify-content: flex-end;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.data-table .actions .btn {
+    margin-left: var(--md-spacing-1);
 }
 
 /* Row number column */
