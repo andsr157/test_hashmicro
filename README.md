@@ -11,7 +11,7 @@ Simple CRUD Employee Management System menggunakan Vue.js 3.
 - ES Modules
 - Google Fonts (Inter)
 
-Sengaja tidak menggunakan UI framework (Tailwind/Bootstrap), Vue Router, atau Vuex karena fokus pada vanilla implementation.
+Sengaja tidak menggunakan UI framework (Tailwind/Bootstrap), Vue Router, atau Vuex/Pinia karena fokus pada vanilla implementation.
 
 ## Fitur
 

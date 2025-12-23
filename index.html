@@ -6,10 +6,15 @@
         <title>HashMicro - Employee Management System</title>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <link rel="stylesheet" href="./src/assets/styles/main.css" />
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
     </head>
 
     <body>
-        <div id="app" class="app-container">
+        <div id="app" v-cloak class="app-container">
             <navbar-component
                 ref="navbar"
                 :current-view="currentView"
